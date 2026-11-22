@@ -76,7 +76,7 @@ Dịch vụ Trợ năng chỉ nghe sự kiện đổi cửa sổ để biết ap
 ```
 MIT License
 
-Copyright (c) 2026 Nguyễn Hoàng Vinh
+Copyright (c) 2026 VinnyCream
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
