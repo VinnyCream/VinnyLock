@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Màn hình khóa, bản sáng. Khớp Palette.light trong lib/app/theme/tokens.dart. -->
+    <color name="lock_bg">#F6F7F5</color>
+    <color name="lock_tone">#ECEFEC</color>
+    <color name="lock_on">#14201E</color>
+    <color name="lock_muted">#4A5A57</color>
+    <color name="lock_brand">#0F766E</color>
+    <color name="lock_on_brand">#FFFFFF</color>
+
+    <color name="icon_bg">#0F766E</color>
+    <color name="icon_fg">#FFFFFF</color>
+    <color name="icon_bg_calculator">#455A64</color>
+    <color name="icon_bg_notes">#F9C846</color>
+    <color name="icon_bg_weather">#2B7DE9</color>
+</resources>

@@ -1,0 +1,4 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Chỉ bản profile cần INTERNET để đo hiệu năng. Bản release không có quyền này. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+</manifest>

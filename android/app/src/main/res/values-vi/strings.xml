@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Vinny Lock</string>
+    <string name="accessibility_service_description">Vinny Lock chỉ dùng dịch vụ này để biết ứng dụng nào vừa được mở, rồi hiện màn hình khóa trước. Không đọc nội dung màn hình, không ghi lại những gì bạn gõ và không dùng internet.</string>
+
+    <!-- Tên icon ngụy trang -->
+    <string name="alias_calculator">Máy tính</string>
+    <string name="alias_notes">Ghi chú</string>
+    <string name="alias_weather">Thời tiết</string>
+
+    <!-- Màn hình khóa -->
+    <string name="lock_title_default">Đã khóa</string>
+    <string name="lock_icon_desc">Ổ khóa</string>
+    <string name="lock_hint_pin">Nhập mã PIN</string>
+    <string name="lock_hint_pattern">Vẽ hình mở khóa</string>
+    <string name="lock_wrong_code">Sai mã</string>
+    <string name="lock_tries_left">Còn %d lần trước khi bị chờ</string>
+    <string name="lock_wait">Thử lại sau %s</string>
+    <string name="lock_forgot">Quên mã?</string>
+    <string name="lock_use_bio">Dùng sinh trắc học</string>
+    <string name="lock_retry_bio">Thử lại sinh trắc học</string>
+    <string name="lock_back">Quay lại</string>
+    <string name="lock_cancel">Hủy</string>
+    <string name="lock_delete">Xóa</string>
+    <string name="lock_delete_short">XÓA</string>
+    <string name="lock_ok">OK</string>
+
+    <!-- Sinh trắc học -->
+    <string name="bio_hint">Dùng vân tay hoặc khuôn mặt để tiếp tục</string>
+    <string name="bio_negative">Hủy</string>
+
+    <!-- Khôi phục -->
+    <string name="recovery_answer_hint">Câu trả lời của bạn</string>
+    <string name="recovery_submit">Xác nhận</string>
+    <string name="recovery_wrong">Sai câu trả lời</string>
+    <string name="recovery_none">Chưa đặt câu hỏi khôi phục.</string>
+
+    <!-- Đặt mã -->
+    <string name="set_verify_current">Nhập mã hiện tại trước</string>
+    <string name="set_new_pin">Chọn mã PIN mới (4 đến 12 số)</string>
+    <string name="set_confirm_pin">Nhập lại mã PIN để xác nhận</string>
+    <string name="set_new_pattern">Vẽ hình mới (ít nhất 4 chấm)</string>
+    <string name="set_confirm_pattern">Vẽ lại hình để xác nhận</string>
+    <string name="set_mismatch">Hai lần nhập không khớp. Thử lại nhé.</string>
+    <string name="set_too_short_pattern">Nối ít nhất 4 chấm</string>
+</resources>

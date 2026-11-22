@@ -1,0 +1,16 @@
+Vinny Lock is a small, calm app lock. Pick the apps you want to protect, then unlock them with your fingerprint or face, a shared PIN or pattern, or a separate code for a single app.
+
+What it does
+- Biometrics, shared code, per-app code, or any combination, with your choice of order.
+- Wrong-attempt penalties you control: at least 5 tries, fixed or escalating waits, per app or for all apps, with a visible countdown.
+- A recovery question you write yourself, always available, even during a wait.
+- Hide the icon or disguise it as a calculator, notes or weather app.
+- Status tags per app, smart search that ignores accents, and a guide page that explains every setting.
+- Vietnamese and English.
+
+What it does not do
+- No internet permission in release builds. Nothing leaves your phone.
+- No ads, no analytics, no accounts, no camera, no location.
+
+How it works
+Vinny Lock uses an Accessibility service only to notice which app was opened. It does not read screen content or record what you type. Codes are stored as salted hashes inside an encrypted file protected by the Android Keystore.

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Theme Flutter hiện lúc khởi động, rồi đổi sang NormalTheme khi khung hình đầu tiên sẵn sàng. -->
+    <style name="LaunchTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        <item name="android:windowBackground">@color/lock_bg</item>
+    </style>
+    <style name="NormalTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        <item name="android:windowBackground">@color/lock_bg</item>
+    </style>
+
+    <!-- Màn hình khóa tự dựng bằng code. Dùng theme nền tảng nên không cần thêm AppCompat. -->
+    <style name="Theme.VinnyLock.Lock" parent="@android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/lock_bg</item>
+        <item name="android:statusBarColor">@color/lock_bg</item>
+        <item name="android:navigationBarColor">@color/lock_bg</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <!-- LauncherActivity không vẽ gì, chỉ chuyển hướng. -->
+    <style name="Theme.VinnyLock.Transparent" parent="@android:style/Theme.Translucent.NoTitleBar">
+        <item name="android:windowAnimationStyle">@null</item>
+    </style>
+</resources>

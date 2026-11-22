@@ -1,0 +1,16 @@
+Vinny Lock là app khóa ứng dụng nhỏ gọn, nhẹ nhàng. Chọn những app cần bảo vệ rồi mở bằng vân tay hoặc khuôn mặt, mã PIN hoặc hình vẽ dùng chung, hoặc một mã riêng cho từng app.
+
+Tính năng
+- Sinh trắc học, mã chung, mã riêng hoặc kết hợp, tự chọn thứ tự.
+- Phạt khi nhập sai do bạn quyết định: tối thiểu 5 lần, chờ cố định hoặc tăng dần, theo từng app hoặc chung, có đếm ngược.
+- Câu hỏi khôi phục do bạn tự đặt, luôn dùng được, kể cả khi đang bị phạt.
+- Ẩn icon hoặc ngụy trang thành máy tính, ghi chú, thời tiết.
+- Thẻ trạng thái cho từng app, tìm kiếm thông minh không cần gõ dấu, trang hướng dẫn giải thích từng cài đặt.
+- Tiếng Việt và tiếng Anh.
+
+Không làm gì
+- Bản phát hành không có quyền internet. Không gì rời khỏi điện thoại.
+- Không quảng cáo, không thống kê, không tài khoản, không camera, không vị trí.
+
+Cách hoạt động
+Vinny Lock dùng dịch vụ Trợ năng chỉ để biết app nào vừa được mở. Không đọc nội dung màn hình, không ghi lại những gì bạn gõ. Mã được lưu dạng băm có muối trong tệp mã hóa bằng Android Keystore.

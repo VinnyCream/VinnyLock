@@ -1,0 +1,24 @@
+name: vinnylock
+description: App lock that keeps everything on your device. No ads, no internet, no tracking.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.7.0 <4.0.0'
+  flutter: '>=3.29.0'
+
+# Chủ ý chỉ dùng Flutter SDK, không thêm package từ pub.dev:
+# ít phụ thuộc hơn thì APK nhẹ hơn, F-Droid duyệt dễ hơn và dễ tái lập bản build.
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true

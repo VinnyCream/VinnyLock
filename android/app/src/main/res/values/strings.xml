@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Vinny Lock</string>
+    <string name="accessibility_service_description">Vinny Lock uses this service only to notice which app was opened, so it can show your lock screen first. It does not read screen content, record what you type, or use the internet.</string>
+
+    <!-- Disguised launcher names -->
+    <string name="alias_calculator">Calculator</string>
+    <string name="alias_notes">Notes</string>
+    <string name="alias_weather">Weather</string>
+
+    <!-- Lock screen -->
+    <string name="lock_title_default">Locked</string>
+    <string name="lock_icon_desc">Lock</string>
+    <string name="lock_hint_pin">Enter your PIN</string>
+    <string name="lock_hint_pattern">Draw your pattern</string>
+    <string name="lock_wrong_code">Wrong code</string>
+    <string name="lock_tries_left">%d tries before a wait</string>
+    <string name="lock_wait">Try again in %s</string>
+    <string name="lock_forgot">Forgot code?</string>
+    <string name="lock_use_bio">Use biometrics</string>
+    <string name="lock_retry_bio">Try biometrics again</string>
+    <string name="lock_back">Back</string>
+    <string name="lock_cancel">Cancel</string>
+    <string name="lock_delete">Delete</string>
+    <string name="lock_delete_short">DEL</string>
+    <string name="lock_ok">OK</string>
+
+    <!-- Biometrics -->
+    <string name="bio_hint">Use your fingerprint or face to continue</string>
+    <string name="bio_negative">Cancel</string>
+
+    <!-- Recovery -->
+    <string name="recovery_answer_hint">Your answer</string>
+    <string name="recovery_submit">Confirm</string>
+    <string name="recovery_wrong">Wrong answer</string>
+    <string name="recovery_none">No recovery question has been set.</string>
+
+    <!-- Setting a code -->
+    <string name="set_verify_current">Enter your current code first</string>
+    <string name="set_new_pin">Choose a new PIN (4 to 12 digits)</string>
+    <string name="set_confirm_pin">Enter the PIN again to confirm</string>
+    <string name="set_new_pattern">Draw a new pattern (at least 4 dots)</string>
+    <string name="set_confirm_pattern">Draw the pattern again to confirm</string>
+    <string name="set_mismatch">The two entries did not match. Try again.</string>
+    <string name="set_too_short_pattern">Connect at least 4 dots</string>
+</resources>

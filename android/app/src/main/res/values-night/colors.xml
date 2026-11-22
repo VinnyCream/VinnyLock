@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Màn hình khóa, bản tối. Khớp Palette.dark trong lib/app/theme/tokens.dart. -->
+    <color name="lock_bg">#0E1514</color>
+    <color name="lock_tone">#1E2A28</color>
+    <color name="lock_on">#E6EEEC</color>
+    <color name="lock_muted">#A5B5B1</color>
+    <color name="lock_brand">#4FD1C5</color>
+    <color name="lock_on_brand">#05211F</color>
+</resources>

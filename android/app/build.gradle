@@ -1,0 +1,76 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    // Plugin Gradle của Flutter phải đặt sau Android và Kotlin.
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+// Khóa ký bản phát hành. Nếu không có key.properties thì bản release KHÔNG được ký
+// (không bao giờ lấy khóa debug), nên F-Droid vẫn tự build và tự ký được.
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file("key.properties")
+if (keystorePropertiesFile.exists()) {
+    keystorePropertiesFile.withInputStream { keystoreProperties.load(it) }
+}
+
+android {
+    namespace = "com.vinnycream.vinnylock"
+    compileSdk = 35
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_17.toString()
+    }
+
+    defaultConfig {
+        applicationId = "com.vinnycream.vinnylock"
+        minSdk = 26
+        targetSdk = 35
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+    signingConfigs {
+        release {
+            if (keystorePropertiesFile.exists()) {
+                storeFile = file(keystoreProperties["storeFile"])
+                storePassword = keystoreProperties["storePassword"]
+                keyAlias = keystoreProperties["keyAlias"]
+                keyPassword = keystoreProperties["keyPassword"]
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig = keystorePropertiesFile.exists() ? signingConfigs.release : null
+            minifyEnabled = true
+            shrinkResources = true
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+        }
+    }
+
+    // Không nhúng danh sách phụ thuộc đã mã hóa của Google: bản reproducible cho F-Droid.
+    dependenciesInfo {
+        includeInApk = false
+        includeInBundle = false
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+}
+
+flutter {
+    source = "../.."
+}
+
+dependencies {
+    implementation "androidx.biometric:biometric:1.1.0"
+    testImplementation "junit:junit:4.13.2"
+}

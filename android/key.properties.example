@@ -1,0 +1,6 @@
+# Sao chép thành key.properties (đã nằm trong .gitignore) và điền thông tin khóa của bạn.
+# KHÔNG BAO GIỜ commit key.properties hoặc file .jks.
+storeFile=/duong/dan/tuyet-doi/toi/vinnylock-release.jks
+storePassword=
+keyAlias=vinnylock
+keyPassword=

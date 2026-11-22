@@ -1,0 +1,4 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Chỉ bản debug cần INTERNET để Flutter nối hot reload. Bản release không có quyền này. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+</manifest>
