@@ -55,7 +55,7 @@ abstract final class AppTheme {
         color: p.surface,
         elevation: 0,
         margin: EdgeInsets.zero,
-        shape: shape,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Corner.large)),
       ),
       listTileTheme: ListTileThemeData(
         minVerticalPadding: Space.sm,
@@ -64,13 +64,17 @@ abstract final class AppTheme {
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: p.tone,
+        fillColor: p.surface,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(Corner.medium),
-          borderSide: BorderSide.none,
+          borderRadius: BorderRadius.circular(Corner.pill),
+          borderSide: BorderSide(color: p.statusNone),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(Corner.pill),
+          borderSide: BorderSide(color: p.statusNone),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(Corner.medium),
+          borderRadius: BorderRadius.circular(Corner.pill),
           borderSide: BorderSide(color: p.brand, width: 2),
         ),
         contentPadding: const EdgeInsets.symmetric(horizontal: Space.lg, vertical: Space.md),

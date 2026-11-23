@@ -25,9 +25,15 @@ object OwnGate {
         }
     }
 
-    /** Chưa đặt mã chung (lần đầu mở app) thì cổng để mở, người dùng cần vào để thiết lập. */
+    /**
+     * Chưa đặt mã chung (lần đầu mở app) thì cổng để mở, người dùng cần vào để thiết lập.
+     * Nhưng nếu đã có ứng dụng được bật khóa mà mã chung bị mất thì cổng đóng lại và
+     * màn hình khóa sẽ báo không có cách mở, tránh để ai cũng vào tắt khóa được.
+     */
     fun isOpen(context: Context): Boolean {
-        if (!AppServices.secrets(context).hasMain()) return true
+        if (!AppServices.secrets(context).hasMain()) {
+            return ConfigStore.get(context).apps.values.none { it.enabled }
+        }
         return UnlockSessions.isUnlocked(context.packageName, SystemClock.elapsedRealtime())
     }
 

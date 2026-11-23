@@ -56,6 +56,8 @@ class _SettingsPageState extends State<SettingsPage> {
           _SearchBox(onChanged: (String v) => setState(() => _query = v)),
           const SizedBox(height: Space.lg),
           if (_query.trim().isEmpty) ...<Widget>[
+            _CodeHero(session: _session, onAction: _onAction),
+            const SizedBox(height: Space.lg),
             _PresetCard(session: _session),
             const SizedBox(height: Space.lg),
             for (final group in SettingGroup.values) ...<Widget>[
@@ -113,6 +115,8 @@ class _SettingsPageState extends State<SettingsPage> {
               children: _query.trim().isEmpty
                   ? <Widget>[
                       if (_selected == SettingGroup.lock) ...<Widget>[
+                        _CodeHero(session: _session, onAction: _onAction),
+                        const SizedBox(height: Space.lg),
                         _PresetCard(session: _session),
                         const SizedBox(height: Space.lg),
                       ],
@@ -182,12 +186,22 @@ class _GroupTile extends StatelessWidget {
     final p = context.palette;
     return Material(
       color: selected ? p.brandContainer : p.surface,
-      borderRadius: BorderRadius.circular(Corner.medium),
+      borderRadius: BorderRadius.circular(Corner.large),
       clipBehavior: Clip.antiAlias,
       child: ListTile(
         selected: selected,
         selectedColor: p.onBrandContainer,
-        leading: Icon(info.icon),
+        minVerticalPadding: Space.md,
+        leading: DecoratedBox(
+          decoration: BoxDecoration(
+            color: selected ? p.surface : p.brandContainer,
+            borderRadius: BorderRadius.circular(Corner.medium),
+          ),
+          child: SizedBox.square(
+            dimension: 44,
+            child: Icon(info.icon, color: p.onBrandContainer),
+          ),
+        ),
         title: Text(context.tr(info.title)),
         subtitle: Text(context.tr(info.subtitle)),
         trailing: const Icon(Icons.chevron_right),
@@ -255,7 +269,7 @@ class _Surface extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       color: context.palette.surface,
-      borderRadius: BorderRadius.circular(Corner.medium),
+      borderRadius: BorderRadius.circular(Corner.large),
       clipBehavior: Clip.antiAlias,
       child: Column(
         children: <Widget>[
@@ -285,7 +299,7 @@ class _PresetCard extends StatelessWidget {
     final text = Theme.of(context).textTheme;
     return Material(
       color: context.palette.surface,
-      borderRadius: BorderRadius.circular(Corner.medium),
+      borderRadius: BorderRadius.circular(Corner.large),
       clipBehavior: Clip.antiAlias,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: Space.lg),
@@ -320,6 +334,56 @@ class _PresetCard extends StatelessWidget {
                   );
                 },
               ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// Thẻ nổi đầu trang Cài đặt: hành động quan trọng nhất là đổi hoặc đặt mã chung.
+class _CodeHero extends StatelessWidget {
+  const _CodeHero({required this.session, required this.onAction});
+
+  final SessionViewModel session;
+  final ValueChanged<SettingAction> onAction;
+
+  @override
+  Widget build(BuildContext context) {
+    final p = context.palette;
+    final text = Theme.of(context).textTheme;
+    final has = session.device.hasMainCode;
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        color: p.brand,
+        borderRadius: BorderRadius.circular(Corner.large),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(Space.xl),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Icon(Icons.lock_outline, color: p.onBrand, size: 32),
+            const SizedBox(height: Space.md),
+            Text(
+              context.tr(has ? Tx.settingsHeroTitle : Tx.riskNoCodeTitle),
+              style: text.titleLarge?.copyWith(color: p.onBrand),
+            ),
+            const SizedBox(height: Space.xs),
+            Text(
+              context.tr(has ? Tx.settingsHeroBody : Tx.riskNoCodeBody),
+              style: text.bodyMedium?.copyWith(color: p.onBrand),
+            ),
+            const SizedBox(height: Space.lg),
+            FilledButton(
+              style: FilledButton.styleFrom(
+                backgroundColor: p.onBrand,
+                foregroundColor: p.brand,
+                shape: const StadiumBorder(),
+              ),
+              onPressed: () => onAction(SettingAction.changeMainCode),
+              child: Text(context.tr(has ? Tx.settingsHeroAction : Tx.riskNoCodeAction)),
+            ),
           ],
         ),
       ),

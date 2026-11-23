@@ -23,6 +23,10 @@
     <string name="lock_cancel">Hủy</string>
     <string name="lock_delete">Xóa</string>
     <string name="lock_delete_short">XÓA</string>
+    <string name="lock_blocked">Ứng dụng này đang khóa nhưng hiện không có cách mở khóa khả dụng. Hãy mở Vinny Lock để sửa.</string>
+    <string name="lock_open_vinny">Mở Vinny Lock</string>
+    <string name="lock_go_home">Về màn hình chính</string>
+    <string name="lock_bio_unavailable">Sinh trắc học không khả dụng, cần nhập mã.</string>
     <string name="lock_ok">OK</string>
 
     <!-- Sinh trắc học -->

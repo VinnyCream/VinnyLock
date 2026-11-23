@@ -23,6 +23,10 @@
     <string name="lock_cancel">Cancel</string>
     <string name="lock_delete">Delete</string>
     <string name="lock_delete_short">DEL</string>
+    <string name="lock_blocked">This app is locked, but no unlock method is available right now. Open Vinny Lock to fix it.</string>
+    <string name="lock_open_vinny">Open Vinny Lock</string>
+    <string name="lock_go_home">Go to home screen</string>
+    <string name="lock_bio_unavailable">Biometrics are not available, so your code is required.</string>
     <string name="lock_ok">OK</string>
 
     <!-- Biometrics -->

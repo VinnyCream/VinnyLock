@@ -62,6 +62,7 @@ open class LockActivity : FragmentActivity() {
     private val pending = ArrayDeque<Factor>()
     private var finishedNormally = false
     private var autoPrompted = false
+    private var notice: String? = null
 
     // Đặt mã
     private var setPackage: String? = null
@@ -220,9 +221,35 @@ open class LockActivity : FragmentActivity() {
             else -> getString(R.string.lock_title_default)
         }
 
+        val bio = biometricAvailable()
+        val steps = plan(effective, hasCode(), bio)
         pending.clear()
-        pending.addAll(plan(effective, hasCode(), biometricAvailable()))
+        notice = if (!bio && (effective.mode == AuthMode.BIOMETRIC_ONLY || effective.mode == AuthMode.BOTH)) {
+            getString(R.string.lock_bio_unavailable)
+        } else null
+
+        if (steps.isEmpty()) {
+            // Không còn yếu tố nào để kiểm tra. Chỉ riêng lần mở app đầu tiên (chưa có mã chung)
+            // mới được vào thẳng để thiết lập. Mọi trường hợp khác giữ nguyên khóa, không cấp quyền.
+            val nothingLocked = ConfigStore.get(this).apps.values.none { it.enabled }
+            if (gateOwn && !secrets.hasMain() && nothingLocked) grant() else showBlocked()
+            return
+        }
+        pending.addAll(steps)
         advance()
+    }
+
+    /** Khóa nhưng không có cách xác thực khả dụng: từ chối, chỉ cho đường vào Vinny Lock để sửa. */
+    private fun showBlocked() {
+        clearStage()
+        messageView.text = getString(R.string.lock_blocked)
+        if (!gateOwn) {
+            body.addView(
+                UiKit.pillButton(this, getString(R.string.lock_open_vinny), filled = true) { beginUnlock(packageName) },
+                FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT, Gravity.CENTER),
+            )
+        }
+        footer.addView(UiKit.textButton(this, getString(R.string.lock_go_home)) { goHome() })
     }
 
     private fun labelOf(pkg: String): String =
@@ -280,6 +307,9 @@ open class LockActivity : FragmentActivity() {
         val p = policy
         if (gateOwn) {
             OwnGate.markUnlocked(this)
+            // Người dùng vào Vinny Lock từ màn hình khóa của một app khác. Khi quay lại app đó,
+            // dịch vụ Trợ năng phải kiểm tra lại, nếu không sẽ bỏ qua vì gói không đổi.
+            ForegroundTracker.forceRecheck = true
             startActivity(Intent(this, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
         } else if (p != null) {
             UnlockSessions.markUnlocked(target, p.relock)
@@ -295,7 +325,7 @@ open class LockActivity : FragmentActivity() {
         clearStage()
         val kind = codeKind()
         showEntryView(kind, Purpose.UNLOCK)
-        messageView.text = hint(kind)
+        messageView.text = listOfNotNull(hint(kind), notice).joinToString("\n")
 
         if (withBiometricButton) footer.addView(UiKit.textButton(this, getString(R.string.lock_use_bio)) { promptBiometric() })
         if (policy?.allowRecovery == true) {

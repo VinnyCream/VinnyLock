@@ -90,12 +90,10 @@ class AppsViewModel extends ChangeNotifier {
 
   Future<Uint8List?> loadIcon(String package) => _catalog.loadIcon(package, _iconSizePx);
 
-  bool _needsCodeFirst(String package) {
-    final mode = session.config.effectiveFor(package).mode;
-    if (mode == AuthMode.biometricOnly) return false;
-    final device = session.device;
-    return !device.hasMainCode && !device.hasOwnCode(package);
-  }
+  /// Luôn cần mã chung trước khi khóa bất kỳ ứng dụng nào. Không có mã chung thì cổng
+  /// của chính Vinny Lock đang mở, ai cầm máy cũng tắt được khóa. Sinh trắc đứng một mình
+  /// cũng không đủ vì khi cảm biến lỗi hoặc bị xóa vân tay thì không còn đường mở.
+  bool _needsCodeFirst(String package) => !session.device.hasMainCode;
 
   void _onSessionChanged() {
     _rebuild();

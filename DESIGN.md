@@ -20,7 +20,7 @@ Roboto hệ thống. Có đủ dấu tiếng Việt, không tốn dung lượng 
 
 ## Khoảng cách và bo góc
 
-Khoảng cách: 4, 8, 12, 16, 24, 32, 48. Bo góc: 8, 12, 20.
+Khoảng cách: 4, 8, 12, 16, 24, 32, 48. Bo góc: 8, 12, 20 và viên thuốc (pill) cho ô tìm, tab, thanh điều hướng.
 
 ## Màu
 
@@ -34,6 +34,8 @@ Khoảng cách: 4, 8, 12, 16, 24, 32, 48. Bo góc: 8, 12, 20.
 | Thương hiệu | 0F766E | 4FD1C5 |
 | Nguy hiểm | B3261E | FFB4AB |
 | Chú ý | B45309 | F4A259 |
+| Nền cảnh báo | FFF1E0 | 3A2A14 |
+| Chữ trên nền cảnh báo | 5A2B04 | FBD9B0 |
 
 Trạng thái (sáng / tối): không 6B7775 / 8FA09C, sinh trắc 1D4ED8 / 7AA2FF, mã chung 0F766E / 4FD1C5, mã riêng B45309 / F4A259, kết hợp 9D174D / F28BB1.
 
@@ -41,7 +43,7 @@ Mọi cặp chữ trên nền đạt tối thiểu 4.5:1 (đã tính bằng scri
 
 ## Thích ứng
 
-Theo bề rộng cửa sổ, không theo loại máy: dưới 600 thanh dưới, 600 đến 839 rail, từ 840 rail mở rộng. Danh sách app thành lưới khi rộng. Cài đặt thành hai ngăn từ 720. Nội dung đọc được giới hạn bề rộng.
+Theo bề rộng cửa sổ, không theo loại máy: dưới 600 thanh điều hướng nổi dạng viên thuốc (mục đang chọn mở rộng kèm chữ), 600 đến 839 rail, từ 840 rail mở rộng. Danh sách app thành lưới khi rộng. Cài đặt thành hai ngăn từ 720. Nội dung đọc được giới hạn bề rộng.
 
 ## Quy tắc
 
@@ -49,3 +51,13 @@ Theo bề rộng cửa sổ, không theo loại máy: dưới 600 thanh dưới,
 - Cài đặt, trang hướng dẫn và tìm kiếm cùng đọc `settings_registry.dart`. Thêm cài đặt ở đó là đủ.
 - Không dấu gạch dài trong chữ hiển thị, comment và tài liệu.
 - Mục tiêu chạm tối thiểu 48dp. Có nhãn cho trình đọc màn hình.
+
+## Bố cục trang Ứng dụng (bản 1.1)
+
+Từ trên xuống: thẻ trạng thái (cảnh báo hổ phách khi chưa có mã chung hoặc dịch vụ khóa tắt, thẻ xanh khi ổn), ô tìm dạng viên thuốc kèm nút lọc theo cách khóa, ba tab Tất cả / Đang khóa / Chưa khóa, danh sách ô ứng dụng bo 20 gồm icon, tên, trạng thái, nút chỉnh riêng và công tắc. Trạng thái luôn có hình và chữ, không dựa vào màu một mình. Trang Cài đặt mở đầu bằng thẻ hành động chính (đổi hoặc đặt mã chung), rồi mức nhanh, rồi các nhóm.
+
+## Quy tắc an toàn ảnh hưởng giao diện
+
+- Không bật khóa được khi chưa có mã chung. Công tắc mở hộp thoại đặt mã ngay.
+- Ứng dụng đang khóa mà không còn cách mở khóa khả dụng thì màn hình khóa từ chối, không cho vào.
+- Lời khuyên về ứng dụng ngân hàng nằm ở thẻ trạng thái. Vinny Lock không che dịch vụ Trợ năng khỏi ứng dụng khác.

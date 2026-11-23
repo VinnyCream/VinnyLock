@@ -9,7 +9,10 @@ object FileIo {
         tmp.writeBytes(bytes)
         if (!tmp.renameTo(target)) {
             target.delete()
-            tmp.renameTo(target)
+            if (!tmp.renameTo(target)) {
+                tmp.delete()
+                throw java.io.IOException("Cannot replace " + target.name)
+            }
         }
     }
 

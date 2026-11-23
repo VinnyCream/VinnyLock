@@ -255,8 +255,8 @@ abstract final class Tx {
   static const filterLocked = LText(vi: 'Đang khóa', en: 'Locked');
   static const pickCodeKindTitle = LText(vi: 'Chọn kiểu mã', en: 'Choose a code type');
   static const needMainCode = LText(
-    vi: 'Hãy đặt mã chung trước khi khóa ứng dụng bằng mã.',
-    en: 'Set the shared code before locking an app with a code.',
+    vi: 'Hãy đặt mã chung trước. Mã chung vừa bảo vệ Vinny Lock vừa là đường dự phòng khi sinh trắc không dùng được.',
+    en: 'Set the shared code first. It protects Vinny Lock itself and is the fallback when biometrics are unavailable.',
   );
   static const biometricUnavailable = LText(
     vi: 'Máy chưa cài vân tay hoặc khuôn mặt. Hãy thêm trong Cài đặt của Android.',
@@ -283,4 +283,39 @@ abstract final class Tx {
     vi: 'Bật công tắc để khóa. Chạm vào ứng dụng để chỉnh riêng.',
     en: 'Turn the switch on to lock. Tap an app to fine tune it.',
   );
+
+  // Giao diện mới
+  static const tabLocked = LText(vi: 'Đang khóa', en: 'Locked');
+  static const tabUnlocked = LText(vi: 'Chưa khóa', en: 'Unlocked');
+  static const filterButton = LText(vi: 'Lọc theo cách khóa', en: 'Filter by lock type');
+  static const filterClear = LText(vi: 'Bỏ lọc', en: 'Clear filter');
+  static const riskNoCodeTitle = LText(vi: 'Chưa có mã chung', en: 'No shared code yet');
+  static const riskNoCodeBody = LText(
+    vi: 'Chưa đặt mã chung thì chưa khóa được ứng dụng nào và ai cũng mở được Vinny Lock.',
+    en: 'Until a shared code is set no app can be locked and anyone can open Vinny Lock.',
+  );
+  static const riskNoCodeAction = LText(vi: 'Đặt mã chung', en: 'Set shared code');
+  static const protectedTitle = LText(vi: 'Đang được bảo vệ', en: 'Protected');
+  static const protectedBody = LText(
+    vi: '{n} ứng dụng đang khóa. Dịch vụ khóa đang chạy.',
+    en: '{n} apps locked. The lock service is running.',
+  );
+  static const readyTitle = LText(vi: 'Sẵn sàng', en: 'Ready');
+  static const readyBody = LText(
+    vi: 'Dịch vụ khóa đang chạy. Bật công tắc để khóa một ứng dụng.',
+    en: 'The lock service is running. Turn a switch on to lock an app.',
+  );
+  static const appSettings = LText(vi: 'Chỉnh riêng {name}', en: 'Settings for {name}');
+  static const bankTitle = LText(vi: 'Ứng dụng ngân hàng', en: 'Banking apps');
+  static const bankBody = LText(
+    vi: 'Nhiều ngân hàng cảnh báo khi có bất kỳ dịch vụ Trợ năng nào đang bật, đây là cơ chế của họ và Vinny Lock không thể ẩn. Với app ngân hàng, hãy dùng khóa có sẵn của chính app hoặc của máy (Thư mục bảo mật, Khóa ứng dụng của hãng, Không gian riêng của Android 15). Có thể tắt dịch vụ Trợ năng của Vinny Lock lúc giao dịch rồi bật lại.',
+    en: 'Many banks warn when any Accessibility service is on. That is their check and Vinny Lock cannot hide it. For banking apps use the lock built into the app or the phone (Secure Folder, the maker app lock, Android 15 Private Space). You can also turn the Vinny Lock Accessibility service off while you bank and back on after.',
+  );
+  static const bankAction = LText(vi: 'Mở Trợ năng', en: 'Open Accessibility');
+  static const settingsHeroTitle = LText(vi: 'Thay đổi mã chung', en: 'Change shared code');
+  static const settingsHeroBody = LText(
+    vi: 'Mã dùng để mở Vinny Lock và các ứng dụng chưa có mã riêng.',
+    en: 'The code that opens Vinny Lock and every app without its own code.',
+  );
+  static const settingsHeroAction = LText(vi: 'Đổi mã', en: 'Change code');
 }

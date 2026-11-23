@@ -14,11 +14,12 @@ abstract final class Space {
   static const double huge = 48;
 }
 
-/// Ba mức bo góc.
+/// Các mức bo góc. `pill` cho thanh điều hướng, ô tìm và nút phân đoạn.
 abstract final class Corner {
   static const double small = 8;
   static const double medium = 12;
   static const double large = 20;
+  static const double pill = 999;
 }
 
 /// Bốn cỡ chữ, hai độ đậm.
@@ -55,6 +56,8 @@ class Palette {
     required this.danger,
     required this.onDanger,
     required this.attention,
+    required this.attentionContainer,
+    required this.onAttentionContainer,
     required this.statusNone,
     required this.statusBiometric,
     required this.statusMainCode,
@@ -74,6 +77,8 @@ class Palette {
   final Color danger;
   final Color onDanger;
   final Color attention;
+  final Color attentionContainer;
+  final Color onAttentionContainer;
   final Color statusNone;
   final Color statusBiometric;
   final Color statusMainCode;
@@ -94,6 +99,8 @@ class Palette {
     danger: Color(0xFFB3261E),
     onDanger: Color(0xFFFFFFFF),
     attention: Color(0xFFB45309),
+    attentionContainer: Color(0xFFFFF1E0),
+    onAttentionContainer: Color(0xFF5A2B04),
     statusNone: Color(0xFF6B7775),
     statusBiometric: Color(0xFF1D4ED8),
     statusMainCode: Color(0xFF0F766E),
@@ -114,6 +121,8 @@ class Palette {
     danger: Color(0xFFFFB4AB),
     onDanger: Color(0xFF3A0A06),
     attention: Color(0xFFF4A259),
+    attentionContainer: Color(0xFF3A2A14),
+    onAttentionContainer: Color(0xFFFBD9B0),
     statusNone: Color(0xFF8FA09C),
     statusBiometric: Color(0xFF7AA2FF),
     statusMainCode: Color(0xFF4FD1C5),

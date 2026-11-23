@@ -6,7 +6,7 @@ import 'package:vinnylock/l10n/tx.dart';
 import 'package:vinnylock/presentation/apps/app_icon.dart';
 import 'package:vinnylock/presentation/common/status_ui.dart';
 
-/// Một dòng ứng dụng: icon, tên, trạng thái và công tắc khóa.
+/// Một ứng dụng: icon, tên, trạng thái, nút chỉnh riêng và công tắc khóa.
 class AppTile extends StatelessWidget {
   const AppTile({
     super.key,
@@ -24,20 +24,30 @@ class AppTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final name = entry.app.label;
+    final p = context.palette;
     return Material(
-      color: context.palette.surface,
-      borderRadius: BorderRadius.circular(Corner.medium),
+      color: p.surface,
+      borderRadius: BorderRadius.circular(Corner.large),
       clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: onOpen,
         child: ConstrainedBox(
           constraints: const BoxConstraints(minHeight: 72),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: Space.lg, vertical: Space.sm),
+            padding: const EdgeInsets.fromLTRB(Space.md, Space.sm, Space.sm, Space.sm),
             child: Row(
               children: <Widget>[
-                AppIcon(package: entry.app.package, label: name, loader: iconLoader),
-                const SizedBox(width: Space.lg),
+                DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: p.tone,
+                    borderRadius: BorderRadius.circular(Corner.medium),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(Space.sm),
+                    child: AppIcon(package: entry.app.package, label: name, loader: iconLoader),
+                  ),
+                ),
+                const SizedBox(width: Space.md),
                 Expanded(
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
@@ -54,7 +64,11 @@ class AppTile extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(width: Space.sm),
+                IconButton(
+                  tooltip: context.tr(Tx.appSettings, <String, Object>{'name': name}),
+                  icon: Icon(Icons.tune, color: p.muted),
+                  onPressed: onOpen,
+                ),
                 Semantics(
                   label: context.tr(Tx.toggleLock, <String, Object>{'name': name}),
                   child: Switch(value: entry.enabled, onChanged: onToggle),

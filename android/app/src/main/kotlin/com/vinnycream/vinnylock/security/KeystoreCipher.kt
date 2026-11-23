@@ -46,7 +46,9 @@ object KeystoreCipher {
     }
 
     fun decrypt(blob: ByteArray): ByteArray {
+        require(blob.size > 1) { "Encrypted data is too short" }
         val ivSize = blob[0].toInt() and 0xFF
+        require(ivSize in 12..16 && blob.size > 1 + ivSize + TAG_BITS / 8) { "Encrypted data is malformed" }
         val iv = blob.copyOfRange(1, 1 + ivSize)
         val body = blob.copyOfRange(1 + ivSize, blob.size)
         val cipher = Cipher.getInstance(TRANSFORMATION)
